@@ -12,9 +12,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import java.util.ArrayList;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.Arrays;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private ArrayList<String> arrayList;
+    private ArrayAdapter<String> adapter1;
+    private ListView lv1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +39,7 @@ public class MainActivity extends AppCompatActivity
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });//end setOnClickListener
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,7 +49,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
+
+        /////////////////////////// ListView code starts ////////////////////////////////
+        lv1 = (ListView) findViewById(R.id.lv1); //************************* setting up list view
+        String[] items1 = {"item1", "item2", "item3"};
+        arrayList = new ArrayList<>(Arrays.asList(items1));
+        adapter1 = new ArrayAdapter<String>(this, R.layout.list_item, R.id.textItem, arrayList);
+        lv1.setAdapter(adapter1); ///////////// listview set up complete
+    }//end onCreate method
 
     @Override
     public void onBackPressed() {
@@ -90,10 +106,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
