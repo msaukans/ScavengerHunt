@@ -1,5 +1,6 @@
 package com.sample.maris.scavengerhunt;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,15 +16,27 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+
+import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private ArrayList<String> arrayList;
-    private ArrayAdapter<String> adapter1;
-    private ListView lv1;
+    ListView list;
+    String[] web = {
+            "Google Plus",
+            "Twitter",
+            "Windows"
+    };
+    Integer[] imageId = {
+            R.drawable.ic_menu_camera,
+            R.drawable.ic_menu_camera,
+            R.drawable.ic_menu_camera
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +64,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         /////////////////////////// ListView code starts ////////////////////////////////
-        lv1 = (ListView) findViewById(R.id.lv1); //************************* setting up list view
-        String[] items1 = {"item1", "item2", "item3"};
-        arrayList = new ArrayList<>(Arrays.asList(items1));
-        adapter1 = new ArrayAdapter<String>(this, R.layout.list_item, R.id.textItem, arrayList);
-        lv1.setAdapter(adapter1); ///////////// listview set up complete
+        CustomList adapter = new CustomList(MainActivity.this, web, imageId);
+        list = (ListView) findViewById(R.id.list);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(MainActivity.this, "You Clicked at " + web[+position], Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }//end onCreate method
 
     @Override
@@ -75,19 +95,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @Override
+    //new
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        RelativeLayout content_view = (RelativeLayout)findViewById(R.id.content_main);
+        switch (item.getItemId()){
+            case R.id.action_settings:
+                return true;
+            case R.id.menu_Red:
+                if (item.isChecked()){
+                    item.setChecked(false);
+                }
+                else
+                    item.setChecked(true);
+                content_view.setBackgroundColor(Color.RED);
+                return true;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            case R.id.menu_Green:
+                if (item.isChecked()){
+                    item.setChecked(false);
+                }
+                else
+                    item.setChecked(true);
+                content_view.setBackgroundColor(Color.GREEN);
+                return true;
+
+            case R.id.menu_Yellow:
+                if (item.isChecked()){
+                    item.setChecked(false);
+                }
+                else
+                    item.setChecked(true);
+                content_view.setBackgroundColor(Color.YELLOW);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -105,6 +150,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
+
+        }
+        else if (id == R.id.nav_newTask) {
+
+        }
+        else if (id == R.id.nav_walked) {
+
+        }
+        else if (id == R.id.nav_out) {
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

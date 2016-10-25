@@ -5,20 +5,32 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Account" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Setting" />
+        <!--new tasks-->
+        <item
+            android:id="@+id/nav_newTask"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Create Task" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Global Rank" />
+        <item
+            android:id="@+id/nav_walked"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Total Walked Area" />
+
     </group>
+    <!--account,gallery, Settings,Global rank,Create Task, Total Walked area-->
 
     <item android:title="Communicate">
         <menu>
@@ -26,6 +38,10 @@
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
+            <item
+                android:id="@+id/nav_out"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Log Out" />
 
         </menu>
     </item>
