@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_account"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_settings"
             android:title="Account" />
         <item
             android:id="@+id/nav_gallery"
@@ -22,11 +22,11 @@
             android:title="Create Task" />
         <item
             android:id="@+id/nav_rank"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_rank"
             android:title="Global Rank" />
         <item
             android:id="@+id/nav_walked"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_walk2"
             android:title="Total Walked Area" />
 
     </group>
@@ -40,7 +40,7 @@
                 android:title="Share" />
             <item
                 android:id="@+id/nav_out"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_key"
                 android:title="Log Out" />
 
         </menu>
