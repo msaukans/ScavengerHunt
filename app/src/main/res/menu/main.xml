@@ -23,6 +23,11 @@
             android:orderInCategory="3"
             app:showAsAction="never"
             android:title="Yellow"/>
+        <item
+            android:id="@+id/menu_White"
+            android:orderInCategory="3"
+            app:showAsAction="never"
+            android:title="White"/>
 
     </group>
 </menu>
