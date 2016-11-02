@@ -1,18 +1,15 @@
 package com.sample.maris.scavengerhunt;
 
-
-import org.w3c.dom.NameList;
-
 public class Task {
 
     int id;
-    String name; //name of task
-    int points;
+    String taskName; //name of task
+    int taskPoints;
 
     public Task(int Id, String Name, int Points){
         this.id = Id;
-        this.name = Name;
-        this.points = Points;
+        this.taskName = Name;
+        this.taskPoints = Points;
     }
 
     public void setId(int id) {
@@ -24,18 +21,18 @@ public class Task {
     }
 
     public int getPoints() {
-        return points;
+        return taskPoints;
     }
 
     public void setPoints(int points) {
-        this.points = points;
+        this.taskPoints = points;
     }
 
-    public String getName() {
-        return name;
+    public String getTaskName() {
+        return taskName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.taskName = name;
     }
 }

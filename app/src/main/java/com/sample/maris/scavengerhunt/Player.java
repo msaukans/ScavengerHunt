@@ -1,7 +1,5 @@
 package com.sample.maris.scavengerhunt;
 
-
-
 public class Player {
     int _id;
     String _fName;
@@ -34,7 +32,7 @@ public class Player {
         this._score = _score;
     }
 
-    public String get_fName() {
+    public String getPlayerFName() {
         return _fName;
     }
 
@@ -42,7 +40,7 @@ public class Player {
         this._fName = _fName;
     }
 
-    public String get_lName() {
+    public String getPlayerLName() {
         return _lName;
     }
 
