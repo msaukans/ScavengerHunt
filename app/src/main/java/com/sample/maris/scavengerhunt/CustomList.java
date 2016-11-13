@@ -14,14 +14,15 @@ public class CustomList extends ArrayAdapter<String>{
     private final Activity context;
     private final String[] text;
     private final Integer[] imageId;
-    public CustomList(Activity context,
-                      String[] text, Integer[] imageId) {
+
+    public CustomList(Activity context, String[] text, Integer[] imageId) {
         super(context, R.layout.list_single, text);
         this.context = context;
         this.text = text;
         this.imageId = imageId;
 
-    }
+    }//end CustomList constructor
+
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
@@ -33,5 +34,5 @@ public class CustomList extends ArrayAdapter<String>{
 
         imageView.setImageResource(imageId[position]);
         return rowView;
-    }
-}
+    }//end customList set up
+}//end customList class

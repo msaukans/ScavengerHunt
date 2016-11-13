@@ -10,9 +10,11 @@ public class MyDBHandler extends SQLiteOpenHelper{
 
     private static final int DATABASE_VERSION =1;
     private static final String DATABASE_NAME ="game.db";//have to have .db in the end
+
     //public static final String TABLE_PRODUCTS = "products";//table name
     public static final String TABLE_PLAYERS = "players";
     public static final String TABLE_TASKS = "tasks";
+
     public static final String COLUMN_ID = "_id";
     //public static final String COLUMN_PRODUCTNAME = "productname";
     public static final String COLUMN_PLAYERFNAME = "playerFname";
@@ -23,7 +25,7 @@ public class MyDBHandler extends SQLiteOpenHelper{
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
         super(context,DATABASE_NAME,factory,DATABASE_VERSION);
 
-    }
+    }//end MyDBHandler constructor
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -32,7 +34,7 @@ public class MyDBHandler extends SQLiteOpenHelper{
                 COLUMN_TASKNAME + " TEXT " +
                 ");";
         db.execSQL(qurey);//execSQL = execute query
-    }
+    }//end onCreate method
 
     @Override
     public void onUpgrade(SQLiteDatabase db,int oldVersion, int newVersion) {
@@ -47,7 +49,7 @@ public class MyDBHandler extends SQLiteOpenHelper{
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_TASKS,null,values);
         db.close();
-    }
+    }//end addTask method
 
     public void addPlayer(Player player){
         ContentValues values = new ContentValues();
@@ -56,14 +58,14 @@ public class MyDBHandler extends SQLiteOpenHelper{
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_TASKS,null,values);
         db.close();
-    }
+    }//end addPlayer method
 
     //delete from db
     public void deleteTask(String taskName){
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_TASKS + " WHERE" + COLUMN_TASKNAME + " =\" " + taskName
         +"\";");
-    }
+    }//end deleteTask method
 
     //print out db as a string
     public String databateToString(){
@@ -84,5 +86,6 @@ public class MyDBHandler extends SQLiteOpenHelper{
         }
         db.close();
         return dbString;
-    }
-}
+    }//end databaseToString method
+
+}//end MyDBHandler class

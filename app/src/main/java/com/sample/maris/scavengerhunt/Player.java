@@ -14,7 +14,7 @@ public class Player {
         this._fName = fName;
         this._lName = lName;
         this._score = score;
-    }
+    }//end Player constructor
 
     public int get_id() {
         return _id;

@@ -135,16 +135,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
+    }//end method onOptionsItemSelected
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.nav_account) { //1
-            // Handle the camera action
+
         } else if (id == R.id.nav_gallery) { //2
 
         } else if (id == R.id.nav_rank) { //3
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(MainActivity.this,MapsActivity.class));
         }
         else if (id == R.id.nav_newTask) { //6
-
+            this.startActivity(new Intent(MainActivity.this, Scrape.class));
         }
         else if (id == R.id.nav_walked) {
 
@@ -166,5 +166,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-}
+    }//end onNavigationItemSelected
+}//end class MainActivity

@@ -10,7 +10,7 @@ public class Task {
         this.id = Id;
         this.taskName = Name;
         this.taskPoints = Points;
-    }
+    }//end Task constructor
 
     public void setId(int id) {
         this.id = id;
