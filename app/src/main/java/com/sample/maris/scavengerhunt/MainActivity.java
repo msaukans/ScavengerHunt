@@ -1,5 +1,6 @@
 package com.sample.maris.scavengerhunt;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -151,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_settio) { //4
 
         } else if (id == R.id.nav_share) { //5
-
+            startActivity(new Intent(MainActivity.this,MapsActivity.class));
         }
         else if (id == R.id.nav_newTask) { //6
 
