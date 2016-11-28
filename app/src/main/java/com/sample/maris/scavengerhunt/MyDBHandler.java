@@ -29,11 +29,11 @@ public class MyDBHandler extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String qurey = "CREATE TABLE" + TABLE_TASKS + "(" +
-                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT " +
+        String query = "CREATE TABLE " + TABLE_TASKS + " (" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_TASKNAME + " TEXT " +
                 ");";
-        db.execSQL(qurey);//execSQL = execute query
+        db.execSQL(query);//execSQL = execute query
     }//end onCreate method
 
     @Override

@@ -21,7 +21,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
@@ -36,14 +36,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sample.maris.scavengerhunt.MainActivity" />
         </activity>
-
-        <activity
-            android:name=".Scrape">
+        <activity android:name=".Scrape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sample.maris.scavengerhunt.MainActivity" />
         </activity>
-
+        <activity android:name=".welcome">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

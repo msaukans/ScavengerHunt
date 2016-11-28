@@ -21,6 +21,8 @@ public class Scrape extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
     ListView lv;
 
+    MyDBHandler db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,8 @@ public class Scrape extends AppCompatActivity {
 
         new NewThread().execute();
         adapter = new ArrayAdapter<>(this, R.layout.jlist_item,R.id.jtextItem ,contentList);
+
+        db = new MyDBHandler(this, null, null, 1);//object
     }//end onCreate method
 
     public class NewThread extends AsyncTask<String, Void, String>{
@@ -42,6 +46,8 @@ public class Scrape extends AppCompatActivity {
                 contentList.clear();
                 for (Element contents: content){
                     contentList.add(contents.text());
+                    //db.addTask(t);
+                    //printDatabase();
                 }
             }
             catch(IOException e){

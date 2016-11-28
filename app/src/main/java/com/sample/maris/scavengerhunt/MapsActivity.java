@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback ,
@@ -40,6 +41,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
+
+    ArrayList<String> rayz = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,21 +62,35 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         EditText locationSearch = (EditText) findViewById(R.id.editText);
         String location = locationSearch.getText().toString();
         List<Address> addressList = null;
-        location = location + " dublin";
 
-        if (location != null || !location.equals("")) {
-            Geocoder geocoder = new Geocoder(this);
-            try {
-                addressList = geocoder.getFromLocationName(location, 1);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Address address = addressList.get(0);
-            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-            mMap.addMarker(new MarkerOptions().position(latLng).title(location));
-            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        }
+
+        ArrayList<String> rayz = new ArrayList<>();
+        rayz.add("Aviva Stadium");
+        rayz.add("Grafton Street");
+
+
+
+        int a = rayz.size();
+        for(int i=0; i<a; i++) {//loop through the list and keep adding markers which will give notification
+            //now that player is in near landmark and would get points
+            location = rayz.get(i);
+            location = location + " dublin";
+
+            if (location != null || !location.equals("")) {
+                Geocoder geocoder = new Geocoder(this);
+                try {
+                    addressList = geocoder.getFromLocationName(location, 1);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Address address = addressList.get(0);
+                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+            }//end if
+        }//end for
     }
 
     @Override
@@ -137,7 +154,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title("Current Position");
+        markerOptions.title("Starting Position");
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
