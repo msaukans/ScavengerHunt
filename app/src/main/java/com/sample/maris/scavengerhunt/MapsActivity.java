@@ -11,7 +11,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -59,8 +58,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }//end onCreate method
 
     public void onMapSearch(View view) {
-        EditText locationSearch = (EditText) findViewById(R.id.editText);
-        String location = locationSearch.getText().toString();
+
+        String location ;
         List<Address> addressList = null;
 
 
@@ -68,6 +67,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         ArrayList<String> rayz = new ArrayList<>();
         rayz.add("Aviva Stadium");
         rayz.add("Grafton Street");
+        rayz.add("Henry Street");
+        rayz.add("Croke Park");
+        rayz.add("Temple Bar");
+        rayz.add("Saint Patricks Cathedral");
+        rayz.add("St. Micheals Church");
+        rayz.add("Merrion Square");
+        rayz.add("Trinity College");
+        rayz.add("Dublin Castle");
+        rayz.add("Molly Malone Statue");
 
 
 

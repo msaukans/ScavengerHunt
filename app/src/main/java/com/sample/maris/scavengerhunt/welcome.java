@@ -1,6 +1,7 @@
 package com.sample.maris.scavengerhunt;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.animation.Animation;
@@ -39,5 +40,11 @@ public class welcome extends AppCompatActivity {
             }
         });
 
+        //openPlay();  //call method to play audio
+    }
+
+    public void openPlay(){
+        final MediaPlayer sound = MediaPlayer.create(this, R.raw.sound); //getting audio
+        sound.start();//playing audio
     }
 }

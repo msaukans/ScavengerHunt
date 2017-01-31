@@ -12,6 +12,10 @@ public class Task {
         this.taskPoints = Points;
     }//end Task constructor
 
+    public Task(String s) {
+        taskName = s;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

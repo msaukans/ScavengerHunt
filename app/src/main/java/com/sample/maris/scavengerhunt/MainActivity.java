@@ -12,12 +12,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     ListView list;
     String[] text = {
             "Temple Bar",
@@ -31,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             R.drawable.ic_menu_camera,
             R.drawable.ic_menu_camera
     };
+    ImageView img1,img4,img5,img7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         /////////////////////////// ListView code starts ////////////////////////////////
-        CustomList adapter = new CustomList(MainActivity.this, text, imageId);
+        /*CustomList adapter = new CustomList(MainActivity.this, text, imageId);
         list = (ListView) findViewById(R.id.list);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -69,8 +69,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(MainActivity.this, text[+position] + "\n 5 points", Toast.LENGTH_SHORT).show();
 
             }
-        });
+        });*/
+
+        img1 = (ImageView) findViewById(R.id.img1);
+        img4 = (ImageView) findViewById(R.id.img4);
+        img5 = (ImageView) findViewById(R.id.img5);
+        img7 = (ImageView) findViewById(R.id.img7);
+
+        img1.setImageResource(R.mipmap.ic_launcher);
+        img1.setOnClickListener(this);
+        img4.setImageResource(R.drawable.ic_flag);
+        img4.setOnClickListener(this);
+        img5.setImageResource(R.drawable.ic_walk2);
+        img5.setOnClickListener(this);
+        img7.setImageResource(R.drawable.ic_menu_manage);
+        img7.setOnClickListener(this);
     }//end onCreate method
+
+    public void onClick(View v) {
+        if(v == img1){
+            startActivity(new Intent(MainActivity.this,Scrape.class));
+        }
+        else if(v == img4){
+            startActivity(new Intent(MainActivity.this,MapsActivity.class));
+        }
+        else if(v == img5){
+            startActivity(new Intent(MainActivity.this,StepCounter.class));
+        }
+        else if(v == img7){
+            startActivity(new Intent(MainActivity.this,createT.class));
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -143,25 +172,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
 
-        if (id == R.id.nav_account) { //1
-
-        } else if (id == R.id.nav_gallery) { //2
-
-        } else if (id == R.id.nav_rank) { //3
-
-        } else if (id == R.id.nav_settio) { //4
-
-        } else if (id == R.id.nav_share) { //5
-            startActivity(new Intent(MainActivity.this,MapsActivity.class));
-        }
-        else if (id == R.id.nav_newTask) { //6
-            this.startActivity(new Intent(MainActivity.this, Scrape.class));
+        if(id == R.id.nav_createT){
+            startActivity(new Intent(MainActivity.this,createT.class));
+        } else if (id == R.id.nav_settio) {
+            startActivity(new Intent(MainActivity.this,MapsActivity.class));//open map --change auto search
+        }  else if (id == R.id.nav_newTask) {
+            this.startActivity(new Intent(MainActivity.this, Scrape.class));//scrape data ---move
         }
         else if (id == R.id.nav_walked) {
-
-        }
-        else if (id == R.id.nav_out) {
-
+            startActivity(new Intent(MainActivity.this,StepCounter.class));//steps taken
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

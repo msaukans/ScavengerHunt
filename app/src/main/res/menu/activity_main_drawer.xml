@@ -2,28 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_account"
-            android:icon="@drawable/ic_settings"
-            android:title="Account" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
 
         <item
-            android:id="@+id/nav_settio"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Settings" />
-        <!--new tasks-->
-        <item
-            android:id="@+id/nav_newTask"
+            android:id="@+id/nav_createT"
             android:icon="@drawable/ic_menu_manage"
             android:title="Create Task" />
         <item
+            android:id="@+id/nav_settio"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Map" />
+        <!--new tasks-->
+        <item
+            android:id="@+id/nav_newTask"
+            android:icon="@drawable/ic_flag"
+            android:title="List of landmarks" />
+        <item
             android:id="@+id/nav_rank"
-            android:icon="@drawable/ic_rank"
-            android:title="Global Rank" />
+            android:icon="@drawable/ic_link"
+            android:title="Visit Website" />
         <item
             android:id="@+id/nav_walked"
             android:icon="@drawable/ic_walk2"
@@ -32,16 +28,16 @@
     </group>
     <!--account,gallery, Settings,Global rank,Create Task, Total Walked area-->
 
-    <item android:title="Communicate">
+    <item android:title="">
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:icon="@drawable/ic_con"
+                android:title="Connectivity" />
             <item
                 android:id="@+id/nav_out"
-                android:icon="@drawable/ic_key"
-                android:title="Log Out" />
+                android:icon="@drawable/ic_movie"
+                android:title="Video" />
 
         </menu>
     </item>
