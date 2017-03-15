@@ -47,7 +47,7 @@ public class Scrape extends AppCompatActivity {
 
     public class NewThread extends AsyncTask<String, Void, String>{
         protected String doInBackground(String... arg){
-            notififeAuto();
+          //  notififeAuto();
 
             Document doc;
             try{
@@ -75,7 +75,7 @@ public class Scrape extends AppCompatActivity {
 
     }//end newThread class
 
-    private void notififeAuto() {
+ /*   private void notififeAuto() {
 
         NotificationManager notif=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notify=new Notification.Builder
@@ -85,6 +85,6 @@ public class Scrape extends AppCompatActivity {
         notify.flags |= Notification.FLAG_AUTO_CANCEL;
         notif.notify(0, notify);
 
-    }
+    }*/
 
 }//end Scrape class

@@ -12,9 +12,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.firebase.client.Firebase;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     ListView list;
@@ -30,7 +37,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             R.drawable.ic_menu_camera,
             R.drawable.ic_menu_camera
     };
-    ImageView img1,img4,img5,img7;
+    Button btn1,btn2,btn3;
+
+    private FirebaseAuth fire;
+    private Button logoutBtn;
+    private TextView userEmailTv;
+    Firebase mref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        btn1 = (Button) findViewById(R.id.btn1);
+        btn2 = (Button) findViewById(R.id.btn2);
+        btn3 = (Button) findViewById(R.id.btn3);
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -71,34 +86,49 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });*/
 
-        img1 = (ImageView) findViewById(R.id.img1);
-        img4 = (ImageView) findViewById(R.id.img4);
-        img5 = (ImageView) findViewById(R.id.img5);
-        img7 = (ImageView) findViewById(R.id.img7);
 
-        img1.setImageResource(R.mipmap.ic_launcher);
-        img1.setOnClickListener(this);
-        img4.setImageResource(R.drawable.ic_flag);
-        img4.setOnClickListener(this);
-        img5.setImageResource(R.drawable.ic_walk2);
-        img5.setOnClickListener(this);
-        img7.setImageResource(R.drawable.ic_menu_manage);
-        img7.setOnClickListener(this);
+
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+
+        //Firebase auth variables initation
+        fire = FirebaseAuth.getInstance();
+        if(fire.getCurrentUser() !=null){
+            //finish();//t
+            //startActivity(new Intent(ProfileActivity.this,LoginActivity.class));
+        }
+
+        FirebaseUser user = fire.getCurrentUser();
+        String user1;
+        user1 = user.getEmail();
+        userEmailTv = (TextView) findViewById(R.id.userEmailTv);
+        userEmailTv.setText(getString(R.string.welcome) + " " + user1);
+        logoutBtn = (Button) findViewById(R.id.logoutBtn);
+        logoutBtn.setOnClickListener(this);
+
+        Firebase.setAndroidContext(this);
+        mref = new Firebase("https://fir-authentication-5c0ce.firebaseio.com");
+
     }//end onCreate method
 
     public void onClick(View v) {
-        if(v == img1){
+        if(v == btn2){
             startActivity(new Intent(MainActivity.this,Scrape.class));
         }
-        else if(v == img4){
+        else if(v == btn1){
             startActivity(new Intent(MainActivity.this,MapsActivity.class));
         }
-        else if(v == img5){
+        else if(v == btn3){
             startActivity(new Intent(MainActivity.this,StepCounter.class));
         }
-        else if(v == img7){
-            startActivity(new Intent(MainActivity.this,createT.class));
+        else if(logoutBtn == v){
+            fire.signOut();
+            finish();//t
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            Toast.makeText(this, "Signed out", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     @Override

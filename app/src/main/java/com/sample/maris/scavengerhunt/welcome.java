@@ -30,7 +30,7 @@ public class welcome extends AppCompatActivity {
             public void onAnimationEnd(Animation animation) {
                 iv.startAnimation(an2);
                 finish();
-                Intent i = new Intent(welcome.this, MainActivity.class);
+                Intent i = new Intent(welcome.this, LoginActivity.class);
                 startActivity(i);
             }
 
@@ -39,12 +39,6 @@ public class welcome extends AppCompatActivity {
 
             }
         });
-
-        //openPlay();  //call method to play audio
     }
 
-    public void openPlay(){
-        final MediaPlayer sound = MediaPlayer.create(this, R.raw.sound); //getting audio
-        sound.start();//playing audio
-    }
 }

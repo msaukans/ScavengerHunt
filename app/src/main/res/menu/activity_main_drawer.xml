@@ -16,10 +16,7 @@
             android:id="@+id/nav_newTask"
             android:icon="@drawable/ic_flag"
             android:title="List of landmarks" />
-        <item
-            android:id="@+id/nav_rank"
-            android:icon="@drawable/ic_link"
-            android:title="Visit Website" />
+
         <item
             android:id="@+id/nav_walked"
             android:icon="@drawable/ic_walk2"

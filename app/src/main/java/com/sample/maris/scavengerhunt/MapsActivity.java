@@ -57,7 +57,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
     }//end onCreate method
 
-    public void onMapSearch(View view) {
+    public void onMapSearch() {
 
         String location ;
         List<Address> addressList = null;
@@ -105,6 +105,33 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        onMapSearch();//TODO calculate now distance to marker
+        List<Address> addressList;
+
+        ArrayList<Location> arr1 = new ArrayList<>();
+        Location mylocation = new Location("");
+        Double my_lat = 52.676765;
+        Double my_lon = -6.292764;
+        mylocation.setLatitude(my_lat);
+        mylocation.setLongitude(my_lon);
+
+        Location dest_location2 = new Location("");
+        String lat2 = "52.336916";
+        String lon2 = "-6.463338099999987";
+        dest_location2.setLatitude(Double.parseDouble(lat2));
+        dest_location2.setLongitude(Double.parseDouble(lon2));
+        Double distance2 = Double.valueOf(mylocation.distanceTo(dest_location2));
+
+
+        Double dist = 100000.00;
+        arr1.add(dest_location2);
+
+        distance2 = (double) mylocation.distanceTo(arr1.get(0));
+        if (distance2 < dist) {
+            Double d = distance2 / 1000;
+            Toast.makeText(this, "close to location/Within 100km..." + d, Toast.LENGTH_SHORT).show();
+        }
 
         //Initialize Google Play Services
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

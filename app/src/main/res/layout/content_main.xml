@@ -13,44 +13,49 @@
     tools:context="com.sample.maris.scavengerhunt.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <GridLayout
-        android:id="@+id/grid1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <TextView
+        android:id="@+id/userEmailTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
+        android:text="@string/user_email"
+        android:textSize="30sp"
+        />
 
-        <ImageView
-            android:id="@+id/img1"
-            android:src="@drawable/scavenger_hunt"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:layout_height="100dp"
-            android:layout_width="100dp"/>
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:layout_below="@id/userEmailTv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textAllCaps="false"/>
 
-        <ImageView
-            android:id="@+id/img4"
-            android:src="@drawable/scavenger_hunt"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:layout_height="100dp"
-            android:layout_width="100dp"/>
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Start the game"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/logoutBtn"/>
 
-        <ImageView
-            android:id="@+id/img5"
-            android:src="@drawable/scavenger_hunt"
-            android:layout_row="0"
-            android:layout_column="2"
-            android:layout_height="100dp"
-            android:layout_width="100dp"/>
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Scrape data"
+        android:layout_below="@id/btn1"
+        android:layout_marginTop="20dp"/>
 
-        <ImageView
-            android:id="@+id/img7"
-            android:src="@drawable/scavenger_hunt"
-            android:layout_row="1"
-            android:layout_column="1"
-            android:layout_height="100dp"
-            android:layout_width="100dp"/>
-    </GridLayout>
-
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Step counter"
+        android:layout_below="@id/btn2"
+        android:layout_marginTop="20dp"/>
 </RelativeLayout>

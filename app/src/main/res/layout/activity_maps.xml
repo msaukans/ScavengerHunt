@@ -9,16 +9,6 @@
         android:layout_margin="5dp"
         android:orientation="horizontal">
 
-
-
-        <Button
-            android:id="@+id/search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:onClick="onMapSearch"
-            android:text="Add Landmark markers" />
-
     </LinearLayout>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"

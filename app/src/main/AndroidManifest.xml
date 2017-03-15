@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.sensor.stepcounter" />
     <uses-feature android:name="android.hardware.sensor.stepdetector" />
@@ -60,7 +61,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sample.maris.scavengerhunt.MainActivity" />
         </activity>
-        <activity android:name=".createT"></activity>
+        <activity android:name=".createT" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>

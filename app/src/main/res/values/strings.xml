@@ -6,4 +6,13 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
+    <string name="user_email">user email</string>
+    <string name="logout">logout</string>
+    <string name="login">Login</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="dont_have_an_account">don\'t have an account? click here</string>
+    <string name="Register">Register</string>
+    <string name="already_registered_sign_in_here">Already registered? click here to sign in</string>
+    <string name="welcome">welcome</string>
 </resources>
