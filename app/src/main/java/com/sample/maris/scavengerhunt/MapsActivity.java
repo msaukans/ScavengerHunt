@@ -95,10 +95,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
                 Address address = addressList.get(0);
                 LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                mMap.addMarker(new MarkerOptions().position(latLng).title(location).
+                        icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                //Toast.makeText(this, "Marker name is " + rayz.get(i) + "lat " + address.getLatitude() + " lon " +
+                //        address.getLongitude() + " title is " + getTitle(), Toast.LENGTH_SHORT).show();
+
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             }//end if
         }//end for
+
+        LatLng ll = new LatLng(addressList.get(0).getLatitude() , addressList.get(0).getLongitude());
+        mMap.addMarker(new MarkerOptions().position(ll).title(rayz.get(0)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+        Toast.makeText(this, " long  " + addressList.get(0).getLongitude() + " lat" +  addressList.get(0).getLongitude(),Toast.LENGTH_SHORT).show();
+        //TODO add address from locations to visit to array of visited locations and set color HUE_GREEN
+
     }
 
     @Override

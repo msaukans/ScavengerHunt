@@ -12,7 +12,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class createT extends AppCompatActivity {
+public class createT extends AppCompatActivity {//TODO create onClick listener to complete task which will open camera to take picture/video
+   //TODO of task being completed
 
     String t;
     public static ArrayList<String> list;
