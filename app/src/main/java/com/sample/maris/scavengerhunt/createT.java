@@ -12,8 +12,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class createT extends AppCompatActivity {//TODO create onClick listener to complete task which will open camera to take picture/video
-   //TODO of task being completed
+import android.content.SharedPreferences;
+import android.widget.Toast;
+
+
+public class createT extends AppCompatActivity {
 
     String t;
     public static ArrayList<String> list;
@@ -34,13 +37,14 @@ public class createT extends AppCompatActivity {//TODO create onClick listener t
         btn1 = (Button) findViewById(R.id.btn1);
         list1 = (ListView) findViewById(R.id.list1);
 
-        String[] items1 = {"Sing with street musician", "A stranger's autograph ", "Do a dramatic earthquake scene in a public place"};
+        String[] items1 = {"Sing with street musician", "Get a stranger's autograph ", "Do a dramatic earthquake scene in a public place"};
         list = new ArrayList<>(Arrays.asList(items1));
         adapter1 = new ArrayAdapter<String>(this, R.layout.jlist_item, R.id.jtextItem, list);
-        list1.setAdapter(adapter1);//listview setup
+        list1.setAdapter(adapter1);
 
         ed1 = (EditText) findViewById(R.id.ed1);
         Button addButton = (Button) findViewById(R.id.btn1);
+        //TODO move to a seprate method onClicks
         addButton.setOnClickListener(new View.OnClickListener() {//adds items to first adapter
             public void onClick(View v) {
                 t = ed1.getText().toString();
@@ -51,16 +55,19 @@ public class createT extends AppCompatActivity {//TODO create onClick listener t
 
         });
 
-        list1.setOnItemClickListener(new AdapterView.OnItemClickListener() {//to delete item in second adapter
+        list1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Show input box
                 list.get(position);
+                //TODO to complete task create method which will open camera to take picture/video
+                //TODO of task being completed
+                String j = list.get(position).toString().trim();
                 list.remove(position);
+                Toast.makeText(getApplicationContext(), j + " complete", Toast.LENGTH_SHORT).show();
                 adapter1.notifyDataSetChanged();
             }
         });
-    }
+    }//end on create
 
     protected void onResume() {
 
