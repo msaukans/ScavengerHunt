@@ -6,35 +6,35 @@
         <item
             android:id="@+id/nav_createT"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Create Task" />
+            android:title="@string/create_task" />
         <item
             android:id="@+id/nav_settio"
             android:icon="@mipmap/ic_launcher"
-            android:title="Map" />
+            android:title="@string/map" />
         <!--new tasks-->
         <item
             android:id="@+id/nav_newTask"
             android:icon="@drawable/ic_flag"
-            android:title="List of landmarks" />
+            android:title="@string/list_of_landmarks" />
 
         <item
             android:id="@+id/nav_walked"
             android:icon="@drawable/ic_walk2"
-            android:title="Total Walked Area" />
+            android:title="@string/total_walked_area" />
 
     </group>
-    <!--account,gallery, Settings,Global rank,Create Task, Total Walked area-->
+
 
     <item android:title="">
         <menu>
             <item
                 android:id="@+id/nav_score"
                 android:icon="@drawable/ic_con"
-                android:title="Scoreboard" />
+                android:title="@string/scoreboard" />
             <item
                 android:id="@+id/nav_out"
-                android:icon="@drawable/ic_movie"
-                android:title="Log Out" />
+                android:icon="@drawable/ic_out"
+                android:title="@string/log_out" />
 
         </menu>
     </item>

@@ -22,40 +22,16 @@
         android:textSize="30sp"
         />
 
-    <Button
-        android:id="@+id/logoutBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/logout"
-        android:layout_below="@id/userEmailTv"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:textAllCaps="false"/>
+
 
     <Button
         android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Start the game"
+        android:text="@string/start_the_game"
         android:layout_marginTop="40dp"
-        android:layout_below="@id/logoutBtn"/>
+        android:layout_below="@id/userEmailTv"/>
 
-    <Button
-        android:id="@+id/btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Scrape data"
-        android:layout_below="@id/btn1"
-        android:layout_marginTop="20dp"/>
 
-    <Button
-        android:id="@+id/btn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Step counter"
-        android:layout_below="@id/btn2"
-        android:layout_marginTop="20dp"/>
 </RelativeLayout>

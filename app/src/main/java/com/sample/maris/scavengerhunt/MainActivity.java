@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         btn1 = (Button) findViewById(R.id.btn1);
-        btn2 = (Button) findViewById(R.id.btn2);
-        btn3 = (Button) findViewById(R.id.btn3);
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -89,9 +87,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         btn1.setOnClickListener(this);
-        btn2.setOnClickListener(this);
-        btn3.setOnClickListener(this);
-
         //Firebase auth variables initation
         fire = FirebaseAuth.getInstance();
         if(fire.getCurrentUser() !=null){
@@ -104,8 +99,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         user1 = user.getEmail();
         userEmailTv = (TextView) findViewById(R.id.userEmailTv);
         userEmailTv.setText(getString(R.string.welcome) + " " + user1);
-        logoutBtn = (Button) findViewById(R.id.logoutBtn);
-        logoutBtn.setOnClickListener(this);
 
         Firebase.setAndroidContext(this);
         mref = new Firebase("https://fir-authentication-5c0ce.firebaseio.com");
@@ -113,20 +106,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }//end onCreate method
 
     public void onClick(View v) {
-        if(v == btn2){
-            startActivity(new Intent(MainActivity.this,Scrape.class));
-        }
-        else if(v == btn1){
+        if(v == btn1){
             startActivity(new Intent(MainActivity.this,MapsActivity.class));
-        }
-        else if(v == btn3){
-            startActivity(new Intent(MainActivity.this,StepCounter.class));
-        }
-        else if(logoutBtn == v){
-            fire.signOut();
-            finish();//t
-            startActivity(new Intent(MainActivity.this,LoginActivity.class));
-            Toast.makeText(this, "Signed out", Toast.LENGTH_SHORT).show();
         }
 
     }
