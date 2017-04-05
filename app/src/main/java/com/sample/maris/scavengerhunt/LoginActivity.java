@@ -31,8 +31,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         fire = FirebaseAuth.getInstance();
-        if(fire.getCurrentUser() != null){
-
+        if(fire.getCurrentUser() !=null){
+            finish();
+            startActivity(new Intent(this,MainActivity.class));
         }
 
         loginBtn = (Button) findViewById(R.id.loginBtn);

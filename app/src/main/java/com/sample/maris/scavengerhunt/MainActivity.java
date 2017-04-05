@@ -203,14 +203,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if(id == R.id.nav_createT){
-            startActivity(new Intent(MainActivity.this,createT.class));
+            startActivity(new Intent(MainActivity.this,createT.class));//create new task
         } else if (id == R.id.nav_settio) {
-            startActivity(new Intent(MainActivity.this,MapsActivity.class));//open map --change auto search
+            startActivity(new Intent(MainActivity.this,MapsActivity.class));//open map
         }  else if (id == R.id.nav_newTask) {
             this.startActivity(new Intent(MainActivity.this, Scrape.class));//scrape data ---move
         }
         else if (id == R.id.nav_walked) {
             startActivity(new Intent(MainActivity.this,StepCounter.class));//steps taken
+        }
+        else if(id == R.id.nav_score){//scoreboard
+            //
+        }
+        else if(id == R.id.nav_out){//logout
+            fire.signOut();
+            finish();
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            Toast.makeText(this, "Signed out", Toast.LENGTH_SHORT).show();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

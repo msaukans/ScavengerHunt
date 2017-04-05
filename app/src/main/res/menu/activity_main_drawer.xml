@@ -28,13 +28,13 @@
     <item android:title="">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_score"
                 android:icon="@drawable/ic_con"
-                android:title="Connectivity" />
+                android:title="Scoreboard" />
             <item
                 android:id="@+id/nav_out"
                 android:icon="@drawable/ic_movie"
-                android:title="Video" />
+                android:title="Log Out" />
 
         </menu>
     </item>

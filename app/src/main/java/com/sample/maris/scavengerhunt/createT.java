@@ -16,7 +16,7 @@ import android.content.SharedPreferences;
 import android.widget.Toast;
 
 
-public class createT extends AppCompatActivity {
+public class createT extends AppCompatActivity implements View.OnClickListener{
 
     String t;
     public static ArrayList<String> list;
@@ -44,16 +44,8 @@ public class createT extends AppCompatActivity {
 
         ed1 = (EditText) findViewById(R.id.ed1);
         Button addButton = (Button) findViewById(R.id.btn1);
-        //TODO move to a seprate method onClicks
-        addButton.setOnClickListener(new View.OnClickListener() {//adds items to first adapter
-            public void onClick(View v) {
-                t = ed1.getText().toString();
-                list.add(t);
-                adapter1.notifyDataSetChanged();
-                ed1.setText("");
-            }
 
-        });
+        addButton.setOnClickListener(this);
 
         list1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -74,4 +66,16 @@ public class createT extends AppCompatActivity {
         super.onResume();
 
     }
-}
+
+    @Override
+    public void onClick(View view) {
+        if(view == btn1){
+
+                    t = ed1.getText().toString();
+                    list.add(t);
+                    adapter1.notifyDataSetChanged();
+                    ed1.setText("");
+        }
+    }//end onClick
+
+}//end CreateT

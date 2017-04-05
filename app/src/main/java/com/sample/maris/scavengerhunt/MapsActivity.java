@@ -116,6 +116,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
+
+
         onMapSearch();//TODO calculate now distance to marker
         List<Address> addressList;
 
