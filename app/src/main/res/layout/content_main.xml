@@ -13,14 +13,6 @@
     tools:context="com.sample.maris.scavengerhunt.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
-        android:id="@+id/userEmailTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/user_email"
-        android:textSize="30sp"
-        />
 
 
 
@@ -31,7 +23,8 @@
         android:layout_centerHorizontal="true"
         android:text="@string/start_the_game"
         android:layout_marginTop="40dp"
-        android:layout_below="@id/userEmailTv"/>
+
+        android:layout_centerVertical="true"/>
 
 
 </RelativeLayout>

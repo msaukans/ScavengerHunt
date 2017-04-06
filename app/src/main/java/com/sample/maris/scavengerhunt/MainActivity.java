@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private FirebaseAuth fire;
     private Button logoutBtn;
-    private TextView userEmailTv;
+    private TextView userEmailTv,tv1;
     Firebase mref;
 
     @Override
@@ -51,6 +51,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         btn1 = (Button) findViewById(R.id.btn1);
+
+        btn1.setOnClickListener(this);
+        //Firebase auth variables initation
+        fire = FirebaseAuth.getInstance();
+        if(fire.getCurrentUser() !=null){
+            //finish();//t
+            //startActivity(new Intent(ProfileActivity.this,LoginActivity.class));
+        }
+
+        FirebaseUser user = fire.getCurrentUser();
+        String user1;
+        user1 = user.getEmail();
+        //userEmailTv = (TextView) findViewById(R.id.userEmailTv);
+        //userEmailTv.setText(getString(R.string.welcome) + " " + user1);
+
+        Firebase.setAndroidContext(this);
+        mref = new Firebase("https://fir-authentication-5c0ce.firebaseio.com");
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +86,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        View headerView = navigationView.getHeaderView(0);
+        tv1 = (TextView) headerView.findViewById(R.id.playerNameNavBar);
+        tv1.setText(user1);
         /////////////////////////// ListView code starts ////////////////////////////////
         /*CustomList adapter = new CustomList(MainActivity.this, text, imageId);
         list = (ListView) findViewById(R.id.list);
@@ -86,22 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-        btn1.setOnClickListener(this);
-        //Firebase auth variables initation
-        fire = FirebaseAuth.getInstance();
-        if(fire.getCurrentUser() !=null){
-            //finish();//t
-            //startActivity(new Intent(ProfileActivity.this,LoginActivity.class));
-        }
 
-        FirebaseUser user = fire.getCurrentUser();
-        String user1;
-        user1 = user.getEmail();
-        userEmailTv = (TextView) findViewById(R.id.userEmailTv);
-        userEmailTv.setText(getString(R.string.welcome) + " " + user1);
-
-        Firebase.setAndroidContext(this);
-        mref = new Firebase("https://fir-authentication-5c0ce.firebaseio.com");
 
     }//end onCreate method
 
@@ -206,4 +210,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }//end onNavigationItemSelected
+
+
 }//end class MainActivity
