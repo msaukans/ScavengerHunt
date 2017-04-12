@@ -63,7 +63,12 @@
         </activity>
         <activity android:name=".createT" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+
+        <service
+            android:name=".MainService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

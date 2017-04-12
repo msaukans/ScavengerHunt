@@ -25,7 +25,6 @@ public class Scrape extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
     ListView lv;
 
-    MyDBHandler db;
 
     private ProgressDialog spin;
 
@@ -41,24 +40,19 @@ public class Scrape extends AppCompatActivity {
         spin.show();
         new NewThread().execute();
         adapter = new ArrayAdapter<>(this, R.layout.jlist_item,R.id.jtextItem ,contentList);
-
-        db = new MyDBHandler(this, null, null, 1);//object
     }//end onCreate method
 
     public class NewThread extends AsyncTask<String, Void, String>{
         protected String doInBackground(String... arg){
-          //  notififeAuto();
 
             Document doc;
             try{
                 doc = Jsoup.connect("https://www.tripadvisor.ie/Attractions-g186605-Activities-c47-Dublin_County_Dublin.html#ATTRACTION_LIST").get();
-                content = doc.select(".property_title > a");
+                content = doc.select(".listing_title > a");
 
                 contentList.clear();
                 for (Element contents: content){
                     contentList.add(contents.text());
-                    //db.addTask(t);
-                    //printDatabase();
                 }
             }
             catch(IOException e){
@@ -75,16 +69,5 @@ public class Scrape extends AppCompatActivity {
 
     }//end newThread class
 
- /*   private void notififeAuto() {
-
-        NotificationManager notif=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification notify=new Notification.Builder
-                (getApplicationContext()).setContentTitle("").setContentText("Data scraping activity opened").
-                setContentTitle("Autonotifcation").setSmallIcon(R.mipmap.ic_launcher).build();
-
-        notify.flags |= Notification.FLAG_AUTO_CANCEL;
-        notif.notify(0, notify);
-
-    }*/
 
 }//end Scrape class
