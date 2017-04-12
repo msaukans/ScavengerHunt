@@ -39,7 +39,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/email"
             android:layout_margin="15dp"
-            android:text="maris@maris.net"
             android:layout_below="@id/tvLog"
             android:background="@drawable/rounded_ed"
             android:padding="10dp"/>
@@ -51,7 +50,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:layout_margin="15dp"
-            android:text="pass123"
             android:layout_below="@id/editTextEmail"
             android:background="@drawable/rounded_ed"
             android:padding="10dp"/>
