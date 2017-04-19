@@ -1,6 +1,8 @@
 package com.sample.maris.scavengerhunt;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -109,6 +111,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onClick(View v) {
         if(v == btn1){
             startActivity(new Intent(MainActivity.this,MapsActivity.class));
+            //Boolean started = true;
+            //SharedPreferences sp = getSharedPreferences("start", Context.MODE_PRIVATE);
+            //SharedPreferences.Editor editor = sp.edit();
+
         }
 
     }

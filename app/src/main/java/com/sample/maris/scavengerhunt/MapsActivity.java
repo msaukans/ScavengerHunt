@@ -1,6 +1,10 @@
 package com.sample.maris.scavengerhunt;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -10,7 +14,9 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -40,6 +46,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
+    Intent intent;
 
     ArrayList<String> rayz = new ArrayList<>();
 
@@ -55,6 +62,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        intent = new Intent(this, MainService.class);
     }//end onCreate method
 
     public void onMapSearch() {
@@ -109,6 +118,35 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Toast.makeText(this, " long  " + addressList.get(0).getLongitude() + " lat" +  addressList.get(0).getLongitude(),Toast.LENGTH_SHORT).show();
         //TODO add address from locations to visit to array of visited locations and set color HUE_GREEN
 
+    }
+
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            updateUI(intent);
+        }
+    };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        startService(intent);
+        registerReceiver(broadcastReceiver, new IntentFilter(MainService.BROADCAST_ACTION));
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterReceiver(broadcastReceiver);
+        stopService(intent);
+    }
+
+
+    private void updateUI(Intent intent) {
+        String counter = intent.getStringExtra("counter");
+
+        TextView txtCounter = (TextView) findViewById(R.id.timeRes);
+        txtCounter.setText(counter);
     }
 
     @Override
