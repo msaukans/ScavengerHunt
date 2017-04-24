@@ -71,7 +71,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".Info"></activity>
+        <activity android:name=".Info" />
+        <activity android:name=".sBoard"></activity>
     </application>
 
 </manifest>

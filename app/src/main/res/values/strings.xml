@@ -15,7 +15,7 @@
     <string name="Register">Register</string>
     <string name="already_registered_sign_in_here">Already registered? click here to sign in</string>
     <string name="welcome">welcome</string>
-    <string name="create_task">Create Task</string>
+    <string name="create_task">Side Task</string>
     <string name="map">Map</string>
     <string name="list_of_landmarks">List of landmarks</string>
     <string name="total_walked_area">Total Walked Area</string>

@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(MainActivity.this,StepCounter.class));//steps taken
         }
         else if(id == R.id.nav_score){//scoreboard
-            //
+            startActivity(new Intent(MainActivity.this, sBoard.class));
         }
         else if(id == R.id.nav_info){
             startActivity(new Intent(MainActivity.this, Info.class));//information page
