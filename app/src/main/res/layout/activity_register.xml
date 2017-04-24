@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sample.maris.scavengerhunt.RegisterActivity">
+    tools:context="com.sample.maris.scavengerhunt.RegisterActivity"
+    android:background="@color/colorPrimaryDark">
 
     <RelativeLayout
         android:id="@+id/lin1"

@@ -24,7 +24,7 @@ public class MainService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        //al.add("stuff_item");
+
 
         intent = new Intent(BROADCAST_ACTION);
     }

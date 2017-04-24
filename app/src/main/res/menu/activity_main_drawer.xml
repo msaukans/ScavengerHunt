@@ -11,7 +11,6 @@
             android:id="@+id/nav_settio"
             android:icon="@mipmap/ic_launcher"
             android:title="@string/map" />
-        <!--new tasks-->
         <item
             android:id="@+id/nav_newTask"
             android:icon="@drawable/ic_flag"
@@ -21,6 +20,10 @@
             android:id="@+id/nav_walked"
             android:icon="@drawable/ic_walk2"
             android:title="@string/total_walked_area" />
+        <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/ic_help"
+            android:title="@string/info" />
 
     </group>
 

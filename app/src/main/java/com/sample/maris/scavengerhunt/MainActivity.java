@@ -195,13 +195,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_settio) {
             startActivity(new Intent(MainActivity.this,MapsActivity.class));//open map
         }  else if (id == R.id.nav_newTask) {
-            this.startActivity(new Intent(MainActivity.this, Scrape.class));//scrape data ---move
+            this.startActivity(new Intent(MainActivity.this, Scrape.class));//scrape data
         }
         else if (id == R.id.nav_walked) {
             startActivity(new Intent(MainActivity.this,StepCounter.class));//steps taken
         }
         else if(id == R.id.nav_score){//scoreboard
             //
+        }
+        else if(id == R.id.nav_info){
+            startActivity(new Intent(MainActivity.this, Info.class));//information page
         }
         else if(id == R.id.nav_out){//logout
             fire.signOut();

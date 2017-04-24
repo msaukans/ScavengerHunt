@@ -22,4 +22,5 @@
     <string name="scoreboard">Scoreboard</string>
     <string name="log_out">Log Out</string>
     <string name="start_the_game">Start the game</string>
+    <string name="info">information</string>
 </resources>
