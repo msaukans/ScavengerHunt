@@ -46,6 +46,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sample.maris.scavengerhunt.MainActivity" />
         </activity>
+
         <activity android:name=".Scrape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -63,7 +64,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sample.maris.scavengerhunt.MainActivity" />
         </activity>
-        <activity android:name=".createT" />
+        <activity android:name=".createT" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sample.maris.scavengerhunt.MainActivity" />
+        </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
 
@@ -72,8 +77,16 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".Info" />
-        <activity android:name=".sBoard"></activity>
+        <activity android:name=".Info" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sample.maris.scavengerhunt.MainActivity" />
+        </activity>
+        <activity android:name=".sBoard">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sample.maris.scavengerhunt.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
