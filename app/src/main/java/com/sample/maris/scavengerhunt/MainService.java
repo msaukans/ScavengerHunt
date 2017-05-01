@@ -78,7 +78,7 @@ public class MainService extends Service {
             new NewThread().execute();
         }
         else{
-            Toast.makeText(this, "Check method failed in service class", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Check method failed in service class", Toast.LENGTH_SHORT).show();
         }
     }
 

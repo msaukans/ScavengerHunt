@@ -18,53 +18,68 @@ import java.util.Arrays;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
 
 public class createT extends AppCompatActivity implements View.OnClickListener{
 
-    String t;
-    public static ArrayList<String> list;
-    EditText ed1;
-    Button btn1;
     ListView list1;
-    ArrayAdapter<String> adapter1;
-    boolean working;
+    private Button btn1;
+    private Firebase mRoofRef;
+    ArrayList <String>arr = new ArrayList<>();
+    ArrayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_t);
-
-        t = String.valueOf(new Task(""));
-
-       /* ed1 = (EditText) findViewById(R.id.ed1);
-        btn1 = (Button) findViewById(R.id.btn1);*/
         list1 = (ListView) findViewById(R.id.list1);
+        Firebase.setAndroidContext(this);
 
-        String[] items1 = {"Sing with street musician", "Get a stranger's autograph ", "Do a dramatic earthquake scene in a public place"};
-        list = new ArrayList<>(Arrays.asList(items1));
-        adapter1 = new ArrayAdapter<String>(this, R.layout.jlist_item, R.id.jtextItem, list);
-        list1.setAdapter(adapter1);
+        mRoofRef = new Firebase("https://fir-authentication-5c0ce.firebaseio.com/tasks");
+        final ArrayAdapter<String> adapter =  new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arr);
+        //R.layout.list_item
+        //android.R.layout.simple_list_item_1
+        list1.setAdapter(adapter);
 
-       /* ed1 = (EditText) findViewById(R.id.ed1);
-        Button addButton = (Button) findViewById(R.id.btn1);
 
-        addButton.setOnClickListener(this);*/
+        mRoofRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                String value = dataSnapshot.getValue(String.class);
+
+                arr.add(value);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
 
         registerForContextMenu(list1);
-
-        /*list1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                list.get(position);
-                //TODO to complete task create method which will open camera to take picture/video
-                //TODO of task being completed
-                String j = list.get(position).toString().trim();
-                list.remove(position);
-                Toast.makeText(getApplicationContext(), j + " complete", Toast.LENGTH_SHORT).show();
-                adapter1.notifyDataSetChanged();
-            }
-        });*/
-    }//end on create
+    }//end onCreate
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -78,19 +93,18 @@ public class createT extends AppCompatActivity implements View.OnClickListener{
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()){
             case R.id.picture_menu_id:
-                /*arrayList.remove(info.position);
-                adapter1.notifyDataSetChanged();*/
-                list.get(info.position);
-                String j = list.get(info.position).toString().trim();
-                list.remove(info.position);
+                arr.get(info.position);
+                String j = arr.get(info.position).toString().trim();
+                arr.remove(info.position);
                 Toast.makeText(getApplicationContext(), j + " complete", Toast.LENGTH_SHORT).show();
-                adapter1.notifyDataSetChanged();
+                //adapter.notifyDataSetChanged();
                 return true;
             case R.id.video_menu_id:
-                /*String itemm = "null-0";
-                itemm = arrayList.get(info.position);
-                arrayList2.add(itemm);
-                adapter2.notifyDataSetChanged();*/
+                arr.get(info.position);
+                j = arr.get(info.position).toString().trim();
+                arr.remove(info.position);
+                Toast.makeText(getApplicationContext(), j + " complete", Toast.LENGTH_SHORT).show();
+                //adapter.notifyDataSetChanged();
                 return true;
 
         }
@@ -114,4 +128,4 @@ public class createT extends AppCompatActivity implements View.OnClickListener{
         }*/
     }//end onClick
 
-}//end CreateT
+}

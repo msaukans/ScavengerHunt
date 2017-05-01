@@ -20,7 +20,8 @@
             android:layout_centerHorizontal="true"
             android:text="Information"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
             android:id="@+id/tv2Info"
@@ -30,7 +31,8 @@
             android:paddingTop="20dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:layout_below="@id/tv1Info"/>
+            android:layout_below="@id/tv1Info"
+            android:textColor="@color/colorPrimaryDark"/>
 
 
 

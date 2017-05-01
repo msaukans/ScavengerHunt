@@ -20,6 +20,10 @@ public class Info extends AppCompatActivity {
                 "timing how long it took the user to get there, how many steps they had to take to get there, " +
                 " how they traveled there eg. by foot or car (if it was by foot they will get extra marks " +
                 " because they the point of the app is to get to know the city), the user could also complete " +
-                "side tasks that  ");
+                "side tasks that you can be completed by long clicking on tasks and youll receive an option" +
+                " to either complete task by taking a video or picture, each option has different amount" +
+                " of points going for it. " +
+                "\n \n \t The point of this app is that it is cheaper than having a guide show you around and it also is" +
+                "more of a fun way to get to know the city.");
     }
 }
