@@ -59,7 +59,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         if(v == tv1){
-
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
         }
     }
@@ -89,11 +88,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             //start profile activity
                             finish();//t
                             startActivity(new Intent(LoginActivity.this,MainActivity.class));
-
                         }
                         else{
                             Toast.makeText(LoginActivity.this,"Please enter email",Toast.LENGTH_SHORT).show();
-
                             startActivity(new Intent(LoginActivity.this,MainActivity.class));
 
                         }

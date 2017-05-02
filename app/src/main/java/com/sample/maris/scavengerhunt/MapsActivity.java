@@ -102,7 +102,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Address address = addressList.get(0);
+                Address address = addressList.get(0);//TODO
                 LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
                 mMap.addMarker(new MarkerOptions().position(latLng).title(location).
                         icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
@@ -113,10 +113,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }//end if
         }//end for
 
-        LatLng ll = new LatLng(addressList.get(0).getLatitude() , addressList.get(0).getLongitude());
-        mMap.addMarker(new MarkerOptions().position(ll).title(rayz.get(0)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-        Toast.makeText(this, " long  " + addressList.get(0).getLongitude() + " lat" +  addressList.get(0).getLongitude(),Toast.LENGTH_SHORT).show();
-        //TODO add address from locations to visit to array of visited locations and set color HUE_GREEN
 
     }
 
@@ -245,7 +241,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(17));
 
         //stop location updates
         if (mGoogleApiClient != null) {
