@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -35,6 +36,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback ,
@@ -49,6 +51,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Intent intent;
 
     ArrayList<String> rayz = new ArrayList<>();
+    ArrayList<String> rayz2 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +76,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-        ArrayList<String> rayz = new ArrayList<>();
+       ArrayList<String> rayz = new ArrayList<>();
         rayz.add("Aviva Stadium");
         rayz.add("Grafton Street");
         rayz.add("Henry Street");
@@ -86,11 +89,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         rayz.add("Dublin Castle");
         rayz.add("Molly Malone Statue");
 
+        /*SharedPreferences settings = getSharedPreferences("PREFS",0);
+        HashSet<String> hashSet2 = new HashSet<String>();
+        hashSet2 = (HashSet<String>) settings.getStringSet("list", new HashSet<String>());
+
+        ArrayList<String> rayz = new ArrayList<String>(hashSet2);*/
 
 
         int a = rayz.size();
-        for(int i=0; i<a; i++) {//loop through the list and keep adding markers which will give notification
-            //now that player is in near landmark and would get points
+        for(int i=0; i<a; i++) {
             location = rayz.get(i);
             location = location + " dublin";
 
@@ -102,18 +109,26 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Address address = addressList.get(0);//TODO
+                Address address = addressList.get(0); //TODO  hg
                 LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
                 mMap.addMarker(new MarkerOptions().position(latLng).title(location).
                         icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-                //Toast.makeText(this, "Marker name is " + rayz.get(i) + "lat " + address.getLatitude() + " lon " +
-                //        address.getLongitude() + " title is " + getTitle(), Toast.LENGTH_SHORT).show();
-
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             }//end if
         }//end for
 
-
+        List<Address> addressList2 = null;
+        rayz2.add("James Joyce Statue");
+        location = rayz2.get(0);
+        Geocoder geocoder2 = new Geocoder(this);
+        location = location + "dublin";
+        try {
+            addressList2 = geocoder2.getFromLocationName(location, 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        LatLng ll = new LatLng(addressList2.get(0).getLatitude() , addressList2.get(0).getLongitude());
+        mMap.addMarker(new MarkerOptions().position(ll).title(rayz2.get(0)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
     }
 
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -152,7 +167,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-        onMapSearch();//TODO calculate now distance to marker
+        onMapSearch();
         List<Address> addressList;
 
         ArrayList<Location> arr1 = new ArrayList<>();

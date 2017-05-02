@@ -2,6 +2,7 @@ package com.sample.maris.scavengerhunt;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.IBinder;
@@ -18,6 +19,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 public class MainService extends Service {
     public static final String BROADCAST_ACTION = "com.websmithing.broadcasttest.displayevent";
@@ -60,6 +62,8 @@ public class MainService extends Service {
         }
     };
 
+
+
     private void DisplayLoggingInfo() {
         intent.putExtra("counter", String.valueOf(++counter));
         intent.putExtra("score_data", score);
@@ -74,12 +78,9 @@ public class MainService extends Service {
     public void check(){
         //this method is used for checking whether there is a saved preference for
         //landmark arraylist so the data wouldn't need to be scraped again
-        if(score != 0) {
+
             new NewThread().execute();
-        }
-        else{
-           // Toast.makeText(this, "Check method failed in service class", Toast.LENGTH_SHORT).show();
-        }
+
     }
 
     public class NewThread extends AsyncTask<String, Void, String> {
@@ -94,11 +95,22 @@ public class MainService extends Service {
                 for (Element contents: content){
                     contentList.add(contents.text());
                 }
+
+                HashSet<String> hashSet = new HashSet<String>(contentList);
+
+                SharedPreferences settings = getSharedPreferences("PREFS",0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putStringSet("list", hashSet);
+                editor.commit();
             }
             catch(IOException e){
                 e.printStackTrace();
             }
             return null;
+
+
+
+
 
         }//end doInBackground method
 
